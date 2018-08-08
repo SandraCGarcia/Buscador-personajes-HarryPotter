@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./App.css";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
@@ -10,6 +10,8 @@ class App extends Component {
     };
     this.getharacter = this.getCharacter.bind(this);
   }
+
+
   getCharacter() {
     fetch("http://hp-api.herokuapp.com/api/characters")
 
@@ -23,16 +25,13 @@ class App extends Component {
       });
   }
 
-  filterCharacter = () => {
-    const Character = this.state.currentTarget.filter(function(item) {
-      console.log(item.name);
-      return item.name;
-    }
-  )
+  filterSearch = (e) => {
+    const character = e.currentTarget.value;
+  
     this.setState({
-      filterSearch: Character
+      filterSearch: character
     })
-  };
+  }
 
   render() {
 
@@ -41,9 +40,15 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="title">Harry Potter Characters</h1>
-        <input type="text" name="personaje" onchange="filterSearch"></input>
+        <input type="text" name="personaje" onChange={this.filterSearch}></input>
         <ul className="card__container">
-          {this.state.datacharacter.map(data => {
+          {this.state.datacharacter
+          
+          
+          .filter(filtro =>{
+            return filtro.name.toLowerCase().includes(this.state.filterSearch.toLowerCase())
+          })
+          .map(data => {
             return (
               <div className="card">
                 <li className="card__list">
@@ -58,7 +63,6 @@ class App extends Component {
               </div>
             );
           })}
-          }
         </ul>
       </div>
     );
