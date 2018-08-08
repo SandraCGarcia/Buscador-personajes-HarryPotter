@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
+import CharacterList from './components/CharacterList';
+import Filters from './components/Filters';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       datacharacter: [],
-      filterSearch: ""
+      inputFilter: ""
     };
     this.getharacter = this.getCharacter.bind(this);
   }
@@ -27,7 +29,7 @@ class App extends Component {
     const character = e.currentTarget.value;
 
     this.setState({
-      filterSearch: character
+      inputFilter: character
     });
   };
 
@@ -37,35 +39,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="title">Harry Potter Characters</h1>
-        <input type="text" name="personaje" onChange={this.filterSearch} />
-        <ul className="card__container">
-          {this.state.datacharacter
-
-            .filter(filtro => {
-              return filtro.name
-                .toLowerCase()
-                .includes(this.state.filterSearch.toLowerCase());
-            })
-            .map(data => {
-              return (
-                <div className="card">
-                  <li className="card__list">
-                    <div className="card__list--photo">
-                      <img
-                        className="card__photo"
-                        src={data.image}
-                        alt={data.name}
-                      />
-                    </div>
-                    <div className="card__info">
-                      <h2 className="card__name">{data.name}</h2>
-                      <p className="card__house">{data.house}</p>
-                    </div>
-                  </li>
-                </div>
-              );
-            })}
-        </ul>
+        <Filters filterSearch={this.filterSearch} />
+        <CharacterList datacharacter={this.state.datacharacter} inputFilter={this.state.inputFilter} filterSearch={this.filterSearch}/>
       </div>
     );
   }
