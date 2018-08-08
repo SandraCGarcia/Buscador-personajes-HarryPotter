@@ -11,6 +11,10 @@ margin-top:50px;
 }
 li{
   list-style: none;
+  text-decoration: none;
+}
+.card__link{
+  text-decoration: none;
 }
 .card__list {
   width: 163px;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class CharacterCard extends React.Component {
 
@@ -16,6 +17,7 @@ class CharacterCard extends React.Component {
 .map(data => {
   return (
     <div className="card">
+    <Link className="card__link" to='/moreinfo'>
       <li className="card__list">
         <div className="card__list--photo">
           <img className="card__photo" src={data.image} alt={data.name}/>
@@ -25,6 +27,7 @@ class CharacterCard extends React.Component {
           <p className="card__house">{data.house}</p>
         </div>
       </li>
+      </Link>
     </div>
   );
 })}
