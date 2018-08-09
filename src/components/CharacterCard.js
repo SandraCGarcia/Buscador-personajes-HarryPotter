@@ -18,7 +18,10 @@ class CharacterCard extends React.Component {
               <div className="card" key={data.id}>
                 <Link className="card__link" to={toUrl}>
                   <li className="card__list">
-                    <div className="card__list--photo" style={ {backgroundImage: `url(${data.image})`} }>
+                    <div
+                      className="card__list--photo"
+                      style={{ backgroundImage: `url(${data.image})` }}
+                    >
                       <img
                         className="card__photo"
                         src={data.image}

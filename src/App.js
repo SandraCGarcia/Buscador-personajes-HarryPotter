@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./styles/App.css";
 import Home from "./components/Home";
 import MoreInfo from "./components/MoreInfo";
 import { Route, Switch } from "react-router-dom";
@@ -37,7 +37,6 @@ class App extends Component {
     });
   };
 
-  
   componentWillMount() {
     this.getCharacter();
   }
