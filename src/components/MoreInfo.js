@@ -4,11 +4,11 @@ import "../styles/moreinfo.css";
 
 
 class MoreInfo extends React.Component {
- 
 
 vivo() {
   const indice = this.props.match.params.id;
   const dataVivo = this.props.characters[indice];
+  
   if (dataVivo.alive===true){
     return <p>vivo</p>;
   }else{
@@ -24,7 +24,7 @@ return <p>muerto</p>
     return (
       <React.Fragment>
       <div className="info__container">
-          <div className="info__photo" style={ {backgroundImage: `url(${data.image})`} }>
+          <div className="info__photo">
             <img className="info__photo--imagen" src={data.image} alt={data.name} />
           </div>
           <div className="info__content">
