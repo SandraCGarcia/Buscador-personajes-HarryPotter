@@ -1,0 +1,17 @@
+.info__container{
+    display:flex;
+    background-color: rgb(253, 136, 93);
+    width: 470px;
+    height: 318px;
+}
+.info__photo--imagen{
+    width: 0;
+    height: 0;
+  }
+  .info__photo{
+    height: 290px;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
