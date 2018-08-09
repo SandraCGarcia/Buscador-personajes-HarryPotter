@@ -36,6 +36,8 @@ class App extends Component {
       inputFilter: character
     });
   };
+
+  
   componentWillMount() {
     this.getCharacter();
   }
@@ -43,7 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="title">Harry Potter Characters</h1>
+        
         <main>
           <Switch>
             <Route
