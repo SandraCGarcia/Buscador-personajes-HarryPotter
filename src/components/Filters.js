@@ -1,18 +1,17 @@
-import React from 'react'
+import React from "react";
 
 class Filter extends React.Component {
-
-  render () {
-
+  render() {
     return (
-<React.Fragment>
-<input type="text" name="personaje" onChange={this.props.filterSearch}></input>
-</React.Fragment>
-
-
+      <React.Fragment>
+        <input
+          type="text"
+          name="personaje"
+          onChange={this.props.filterSearch}
+        />
+      </React.Fragment>
     );
   }
-
 }
 
 export default Filter;

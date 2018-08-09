@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import Home from './components/Home';
-import MoreInfo from './components/MoreInfo';
-import { Route, Switch } from 'react-router-dom';
-
+import Home from "./components/Home";
+import MoreInfo from "./components/MoreInfo";
+import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -21,9 +20,12 @@ class App extends Component {
         return data.json();
       })
       .then(data => {
-        this.setState({
-          datacharacter: data
-        });
+        const characters = {
+          datacharacter: data.map((character, index) => {
+            return { id: index, ...character };
+          })
+        };
+        this.setState(characters);
       });
   }
 
@@ -34,17 +36,43 @@ class App extends Component {
       inputFilter: character
     });
   };
+  componentWillMount() {
+    this.getCharacter();
+  }
 
   render() {
-    this.getCharacter();
-
     return (
       <div className="App">
         <h1 className="title">Harry Potter Characters</h1>
         <main>
           <Switch>
-            <Route exact path='/' render={ () => <Home filterSearch={this.filterSearch} datacharacter={this.state.datacharacter} inputFilter={this.state.inputFilter} filterSearch={this.filterSearch} /> }/>
-            <Route path='moreinfo' component={ MoreInfo } />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Home
+                  filterSearch={this.filterSearch}
+                  datacharacter={this.state.datacharacter}
+                  inputFilter={this.state.inputFilter}
+                  filterSearch={this.filterSearch}
+                />
+              )}
+            />
+            <Route
+              path="/moreinfo/:id"
+              render={props => {
+                if (this.state.datacharacter.length !== 0) {
+                  return (
+                    <MoreInfo
+                      match={props.match}
+                      characters={this.state.datacharacter}
+                    />
+                  );
+                } else {
+                  return <p>No more information</p>;
+                }
+              }}
+            />
           </Switch>
         </main>
       </div>

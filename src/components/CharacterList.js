@@ -6,7 +6,10 @@ class CharacterList extends React.Component {
     return (
       <React.Fragment>
         <ul className="card__container">
-        <CharacterCard datacharacter={this.props.datacharacter} inputFilter={this.props.inputFilter}/>
+          <CharacterCard
+            datacharacter={this.props.datacharacter}
+            inputFilter={this.props.inputFilter}
+          />
         </ul>
       </React.Fragment>
     );
