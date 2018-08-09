@@ -5,10 +5,22 @@ class MoreInfo extends React.Component {
 
   render () {
     const id=this.props.match.params.id;
-    console.log('#######',this.props)
-    return (
+    const data=this.props.characters[id];
 
-    <div>{id}-{this.props.characters[id].name}</div>
+    return (
+      <div>
+        <li>
+          <div>
+            <img src={data.image} alt={data.name}/>
+          </div>
+          <div>
+            <h2>{data.name}</h2>
+              <p>{data.house}</p>
+          </div>
+            </li>
+      </div>
+
+    // <div>{id}-{this.props.characters[id].name}</div>
     
   /* <Link className="card__link" to='/'> */
 
