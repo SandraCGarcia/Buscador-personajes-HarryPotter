@@ -9,6 +9,9 @@ class CharacterList extends React.Component {
           <CharacterCard
             datacharacter={this.props.datacharacter}
             inputFilter={this.props.inputFilter}
+            house={this.props.house} 
+            cont={this.props.cont}
+          gender={this.props.gender}
           />
         </ul>
       </React.Fragment>

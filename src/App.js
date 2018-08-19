@@ -9,9 +9,15 @@ class App extends Component {
     super(props);
     this.state = {
       datacharacter: [],
-      inputFilter: ""
+      inputFilter: "",
+      house: "",
+      contador: 0,
+      gender: ''
     };
-    this.getharacter = this.getCharacter.bind(this);
+    this.getCharacter = this.getCharacter.bind(this);
+    this.filterHouse = this.filterHouse.bind(this);
+    this.cont = this.cont.bind(this);
+    this.filterGender = this.filterGender.bind(this);
   }
 
   getCharacter() {
@@ -29,6 +35,14 @@ class App extends Component {
       });
   }
 
+  cont() {
+    let newContador = this.state.contador + 1;
+
+    this.setState({
+      contador: newContador
+    })
+  }
+
   filterSearch = e => {
     const character = e.currentTarget.value;
 
@@ -37,14 +51,28 @@ class App extends Component {
     });
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.getCharacter();
   }
 
+  filterHouse(e) {
+    const resultado = e.currentTarget.value;
+    this.setState({
+      house: resultado
+    });
+  }
+
+  filterGender(e) {
+    const resultadoG = e.currentTarget.value;
+    this.setState({
+      gender: resultadoG
+    })
+  }
   render() {
     return (
       <div className="App">
         <h1 className="title">Harry Potter Characters</h1>
+        <p>{this.state.contador}</p>
         <main>
           <Switch>
             <Route
@@ -52,10 +80,14 @@ class App extends Component {
               path="/"
               render={() => (
                 <Home
-                  filterSearch={this.filterSearch}
                   datacharacter={this.state.datacharacter}
                   inputFilter={this.state.inputFilter}
                   filterSearch={this.filterSearch}
+                  house={this.state.house}
+                  filterHouse={this.filterHouse}
+                  cont={this.cont}
+                  filterGender={this.filterGender}
+                  gender={this.state.gender}
                 />
               )}
             />
